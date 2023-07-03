@@ -7,7 +7,7 @@ This C++ class provides functionality for generating high-resolution PWM signals
 The `Timer3_FastPWM` class allows you to generate PWM signals on pin 5 of the Arduino Leonardo. It utilizes Timer3 and provides methods for initializing the counter, setting the duty cycle, and retrieving the current duty cycle value.
 
 The class offers the following settings in the constructor:
-- `prescaler` ($`N_{Prescaler}`$): A divider for Timer3. You can choose from the available enumerated values defined in the `Prescaler` enumeration.
+- `prescaler` ($`N_{Prescaler}`$): A divider for Timer3. It is specified using the `Prescaler` enumeration, which provides adjustable values ranging from `PS_1` to `PS_1024`, representing different division ratios.
 - `top_limit` ($`k_{TOP}`$): The maximum value up to which the Timer3 counter counts. This value should be less than 2047.
 
 ## Usage
@@ -17,7 +17,7 @@ To use the `Timer3_FastPWM` class, follow these steps:
 1. Include the `TIMER3_FAST_PWM.h` header file in your Arduino sketch.
 2. Create an instance of the `Timer3_FastPWM` class, providing the desired `prescaler` and `top_limit` values in the constructor.
 3. Call the `begin_Pin5()` method to initialize the counter and configure pin 5 as the PWM output. Optionally, you can set the `invert` parameter to `true` to invert the PWM signal.
-4. Use the `analogWrite_Pin5()` method to set the duty cycle of the PWM signal. Pass a value between 0 and the set `top_limit`.
+4. Use the `analogWrite_Pin5()` method to set the duty cycle of the PWM signal. Pass a value between 0 and the configured `top_limit`.
 5. Retrieve the current duty cycle value using the `get_value_Pin5()` method if needed.
 
 ## Formulas
@@ -25,7 +25,7 @@ To use the `Timer3_FastPWM` class, follow these steps:
 The following formulas can be used to calculate various aspects of the PWM signal:
 
 - Duty Cycle:
-  $`D = k_{REG} / k_{TOP} * 100 \% `$
+  $`D = (k_{REG} / k_{TOP}) * 100 \% `$
 
 - Resolution of the Duty Cycle:
   $`R_{\%PWM} = 100% / k_{TOP}`$
@@ -34,12 +34,12 @@ The following formulas can be used to calculate various aspects of the PWM signa
   $`f_{PWM} = f_{Mikrocontroller} / (N_{Prescaler} * k_{TOP})`$
 
 Where:
-- $`D`$ : Duty cycle in percentage
+- $`D`$ in % : Duty cycle in percentage
 - $`k_{REG}`$ : Value for comparison with the counter value to set a PWM duty cycle
 - $`k_{TOP}`$ : Value to set the PWM frequency (top limit)
-- $`R_{\%PWM}`$ : Resolution of the duty cycle in percentage
-- $`f_{PWM}`$ : Frequency of the PWM signal
-- $`f_{Mikrocontroller}`$ : Operating frequency of the microcontroller
+- $`R_{\%PWM}`$ in % : Resolution of the duty cycle in percentage
+- $`f_{PWM}`$ in Hz : Frequency of the PWM signal
+- $`f_{Mikrocontroller}`$ in Hz : Operating frequency of the microcontroller (16MHz)
 - $`N_{Prescaler}`$ : Counter prescaler
 
 ## Example
