@@ -7,8 +7,8 @@ This C++ class provides functionality for generating PWM signals with Timer3 on 
 The `Timer3_FastPWM` class allows you to generate PWM signals on pin 5 of the Arduino Leonardo. It utilizes Timer3 and provides methods for initializing the counter, setting the duty cycle, and retrieving the current duty cycle value.
 
 The class offers the following settings in the constructor:
-- `prescaler`: A divider for Timer3. You can choose from the available enumerated values defined in the `Prescaler` enumeration.
-- `top_limit`: The maximum value up to which the Timer3 counter counts. This value should be less than 2047.
+- `prescaler` ($`N_{Prescaler}`$): A divider for Timer3. You can choose from the available enumerated values defined in the `Prescaler` enumeration.
+- `top_limit` ($`k_{TOP}`$): The maximum value up to which the Timer3 counter counts. This value should be less than 2047.
 
 ## Usage
 
@@ -24,23 +24,23 @@ To use the `Timer3_FastPWM` class, follow these steps:
 
 The following formulas can be used to calculate various aspects of the PWM signal:
 
-- Duty Cycle (D):
-  D = k_REG / k_TOP * 100%
+- Duty Cycle:
+  $`D = k_{REG} / k_{TOP} * 100 \% `$
 
-- Resolution of the Duty Cycle (R_%PWM):
-  R_%PWM = 100% / k_TOP
+- Resolution of the Duty Cycle:
+  $`R_{\%PWM} = 100% / k_{TOP}`$
 
-- Frequency of PWM (f_PWM) when using f_Mikrocontroller:
-  f_PWM = f_Mikrocontroller / (N_Prescaler * k_TOP)
+- Frequency of PWM:
+  $`f_{PWM} = f_{Mikrocontroller} / (N_{Prescaler} * k_{TOP})`$
 
 Where:
-- D: Duty cycle in percentage
-- k_REG: Value for comparison with the counter value to set a PWM duty cycle
-- k_TOP: Value to set the PWM frequency (top limit)
-- R_%PWM: Resolution of the duty cycle in percentage
-- f_PWM: Frequency of the PWM signal
-- f_Mikrocontroller: Operating frequency of the microcontroller
-- N_Prescaler: Counter prescaler
+- $`D`$ : Duty cycle in percentage
+- $`k_{REG}`$ : Value for comparison with the counter value to set a PWM duty cycle
+- $`k_{TOP}`$ : Value to set the PWM frequency (top limit)
+- $`R_{\%PWM}`$ : Resolution of the duty cycle in percentage
+- $`f_{PWM}`$ : Frequency of the PWM signal
+- $`f_{Mikrocontroller}`$ : Operating frequency of the microcontroller
+- $`N_{Prescaler}`$ : Counter prescaler
 
 ## Example
 
