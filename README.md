@@ -20,6 +20,28 @@ To use the `Timer3_FastPWM` class, follow these steps:
 4. Use the `analogWrite_Pin5()` method to set the duty cycle of the PWM signal. Pass a value between 0 and the set `top_limit`.
 5. Retrieve the current duty cycle value using the `get_value_Pin5()` method if needed.
 
+## Formulas
+
+The following formulas can be used to calculate various aspects of the PWM signal:
+
+- Duty Cycle (D):
+  D = k_REG / k_TOP * 100%
+
+- Resolution of the Duty Cycle (R_%PWM):
+  R_%PWM = 100% / k_TOP
+
+- Frequency of PWM (f_PWM) when using f_Mikrocontroller:
+  f_PWM = f_Mikrocontroller / (N_Prescaler * k_TOP)
+
+Where:
+- D: Duty cycle in percentage
+- k_REG: Value for comparison with the counter value to set a PWM duty cycle
+- k_TOP: Value to set the PWM frequency (top limit)
+- R_%PWM: Resolution of the duty cycle in percentage
+- f_PWM: Frequency of the PWM signal
+- f_Mikrocontroller: Operating frequency of the microcontroller
+- N_Prescaler: Counter prescaler
+
 ## Example
 
 Here's an example usage of the `Timer3_FastPWM` class:
