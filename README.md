@@ -1,6 +1,6 @@
 # Timer3_FastPWM
 
-This C++ class provides functionality for generating PWM signals with Timer3 on an Arduino Leonardo board. While it was designed for the Arduino Leonardo, it may also be compatible with other Arduino boards, although it has not been extensively tested on them.
+This C++ class provides functionality for generating high-resolution PWM signals with Timer3 on an Arduino Leonardo board. While it was designed for the Arduino Leonardo, it may also be compatible with other Arduino boards, although it has not been extensively tested on them.
 
 ## Description
 
